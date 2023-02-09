@@ -6,20 +6,17 @@ import kotlin.time.ExperimentalTime
 import kotlin.time.TestTimeSource
 
 @OptIn(ExperimentalTime::class)
-class TimerController(timeLabel: JLabel) {
+object TimerController {
 
     private var model = TimerModel();
     private val timeSource = TestTimeSource();
     private var beginTime = timeSource.markNow();
     private var timer: Timer = Timer();
-    private val targetLabel: JLabel;
+    private var targetLabel: JLabel = JLabel();
     private var isCancelled: Boolean = true;
 
     init {
-        targetLabel = timeLabel;
         model.seconds = 0;
-
-        updateLabel()
     }
 
     private fun updateTime() {
@@ -31,6 +28,12 @@ class TimerController(timeLabel: JLabel) {
         val time: Array<Long> = getTime();
 
         targetLabel.text = String.format("%02d:%02d:%02d", time[0], time[1], time[2]);
+    }
+
+    fun setTargetLabel(targetLabel: JLabel) {
+        this.targetLabel = targetLabel;
+
+        updateLabel();
     }
 
     fun startTimer() {

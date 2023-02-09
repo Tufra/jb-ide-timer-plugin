@@ -16,12 +16,13 @@ class TimerToolWindow(toolWindow: ToolWindow) {
     private val startTimerButton = JButton("start");
     private val pauseTimerButton = JButton("pause");
 
-    private val timerController = TimerController(timeLabel);
+    private val timerController = TimerController;
     private val targetWindow: ToolWindow;
 
     init {
         addListeners();
         targetWindow = toolWindow;
+        timerController.setTargetLabel(timeLabel);
     }
 
     private fun addListeners() {
@@ -36,7 +37,7 @@ class TimerToolWindow(toolWindow: ToolWindow) {
             row {
                 cell(timeLabel)
                     .horizontalAlign(HorizontalAlign.CENTER)
-                    .verticalAlign(VerticalAlign.FILL)
+                    .verticalAlign(VerticalAlign.CENTER)
                     .bold()
             }.resizableRow()
 

@@ -24,10 +24,22 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="Timer" secondary="true" icon="AllIcons.General.Modified" anchor="right"
+        <toolWindow id="TalyaTimer" secondary="true"
+                    icon="AllIcons.General.Modified" anchor="right"
                     factoryClass="com.example.talyatimer.timerwindow.TimerToolWindowFactory"/>
     </extensions>
     <actions>
-
+        <action id="com.example.talyatimer.action.PauseTimerAction" class="com.example.talyatimer.action.PauseTimerAction"
+                text="Pause TalyaTimer">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <override-text place="MainMenu" text="Start Timer"/>
+            <keyboard-shortcut first-keystroke="control shift P" keymap="$default"/>
+        </action>
+        <action id="com.example.talyatimer.action.StartTimerAction" class="com.example.talyatimer.action.StartTimerAction"
+                text="Start TalyaTimer">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <override-text place="MainMenu" text="Pause Timer"/>
+            <keyboard-shortcut first-keystroke="control shift S" keymap="$default"/>
+        </action>
     </actions>
 </idea-plugin>
