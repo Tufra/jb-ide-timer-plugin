@@ -27,7 +27,15 @@
         <toolWindow id="TalyaTimer" secondary="true"
                     icon="AllIcons.General.Modified" anchor="right"
                     factoryClass="com.example.talyatimer.timerwindow.TimerToolWindowFactory"/>
+
+        <notificationGroup id="TalyaTimer Notifications"
+                           displayType="TOOL_WINDOW"/>
     </extensions>
+
+    <applicationListeners>
+        <listener class="com.example.talyatimer.state.ApplicationStateListener" topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
+
     <actions>
         <action id="com.example.talyatimer.action.PauseTimerAction" class="com.example.talyatimer.action.PauseTimerAction"
                 text="Pause TalyaTimer">
